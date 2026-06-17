@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sahil's Dairy - Order fresh pasteurized milk, pure cow ghee, fresh curd, soft paneer, premium butter, and high-quality dairy sweets online. Subscription deliveries straight to your doorstep daily.">
+  <meta name="keywords" content="Sahil's Dairy, Milk Delivery, Pure Ghee, Curd, Paneer, Butter, Fresh Dairy, Amul, Saras, Mother Dairy, Nandini, Dairy Subscription">
+  <meta name="author" content="Sahil's Dairy Corporate Group">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Sahil's Dairy - Premium Fresh Dairy Parlour">
+  <meta property="og:description" content="Nourishing lives daily with fresh, high-quality, farm-sourced milk and dairy products. Subscribe today for early morning deliveries.">
+  <meta property="og:image" content="assets/hero_banner.png">
+  <meta property="og:type" content="website">
+  
+  <title>Sahil's Dairy | Premium Fresh Dairy Parlour & Subscriptions</title>
+  
+  <!-- Styled Core Sheets -->
+  <link rel="stylesheet" href="index.css">
+  
+  <!-- Dynamic JavaScript Products Data and Main Application Logic -->
+  <script src="products.js" defer></script>
+  <script src="main.js" defer></script>
+</head>
+<body>
+
+  <!-- Sticky Glassmorphic Header -->
+  <header class="glassmorphism" id="main-header">
+    <a href="#" class="logo" id="brand-logo" aria-label="Sahil's Dairy Home">
+      <!-- High Quality cow/drop milk logo -->
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50,95 C75,95 85,75 85,55 C85,35 68,10 50,5 C32,10 15,35 15,55 C15,75 25,95 50,95 Z" fill="#EBF4FC"/>
+        <path d="M50,95 C70,95 78,80 78,60 C78,40 64,15 50,8 C36,15 22,40 22,60 C22,80 30,95 50,95 Z" fill="#0F52BA"/>
+        <!-- Soft Milk Drop splash inside -->
+        <path d="M50,90 C62,90 68,80 68,68 C68,56 59,42 50,30 C41,42 32,56 32,68 C32,80 38,90 50,90 Z" fill="#FFFFFF"/>
+        <circle cx="44" cy="62" r="3" fill="#0F52BA"/>
+        <circle cx="56" cy="62" r="3" fill="#0F52BA"/>
+        <path d="M42,72 Q50,78 58,72" stroke="#0F52BA" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span>Sahil's Dairy</span>
+    </a>
+
+    <nav aria-label="Main Navigation">
+      <a href="#" class="active" id="nav-home">Home</a>
+      <a href="#catalog" id="nav-shop">Shop Parlour</a>
+      <a href="#subscriptions" id="nav-sub">Subscriptions</a>
+      <a href="#membership" id="nav-member">Dairy Club</a>
+      <a href="#locator" id="nav-locate">Booths</a>
+      <a href="#franchise" id="nav-fran">Franchise</a>
+    </nav>
+
+    <div class="nav-actions">
+      <!-- Dark Mode Toggle Button -->
+      <button class="btn-icon" id="btn-theme-toggle" aria-label="Toggle Light/Dark Theme">🌙</button>
+      
+      <!-- User Profile / Auth Container -->
+      <div id="auth-header-container" style="position: relative; display: flex; align-items: center;">
+        <!-- Logged out trigger -->
+        <button class="btn-icon" id="btn-show-auth" aria-label="Sign In / Sign Up">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
+          </svg>
+        </button>
+        <!-- Logged in state dropdown -->
+        <div id="user-profile-menu" style="display: none; position: relative;">
+          <button class="btn-icon" id="btn-user-avatar" aria-label="User Account Dashboard" style="font-weight: 700; background: var(--primary); color: white; border-color: var(--primary);">
+            U
+          </button>
+          <div class="dropdown-menu glassmorphism" id="user-dropdown">
+            <div class="dropdown-header">
+              <span id="dropdown-user-name" style="font-weight: 700; display: block; color: var(--text-dark); font-size: 0.9rem;">User Name</span>
+              <span id="dropdown-user-email" style="font-size: 0.75rem; color: var(--text-muted); display: block; word-break: break-all; margin-top: 2px;">user@gmail.com</span>
+            </div>
+            <hr style="border: 0; border-top: 1px solid var(--card-border); margin: 8px 0;">
+            <a href="javascript:void(0)" class="dropdown-item" id="dropdown-btn-dashboard">Dairy Club Dashboard</a>
+            <a href="javascript:void(0)" class="dropdown-item" id="dropdown-btn-settings">Account Details</a>
+            <hr style="border: 0; border-top: 1px solid var(--card-border); margin: 8px 0;">
+            <a href="javascript:void(0)" class="dropdown-item logout" id="dropdown-btn-logout" style="color: var(--danger); font-weight: 600;">Sign Out</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Wishlist Action -->
+      <button class="btn-icon" id="btn-wishlist" aria-label="View Wishlist">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>
+        </svg>
+        <span class="badge" id="wishlist-badge" style="display: none;">0</span>
+      </button>
+      
+      <!-- Cart Drawer Action -->
+      <button class="btn-icon" id="btn-cart" aria-label="View Shopping Cart">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/>
+        </svg>
+        <span class="badge" id="cart-badge" style="display: none;">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero-section">
+    <div class="hero-content">
+      <div class="hero-tag">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+        <span>Purest Farm Fresh Dairy Delivery</span>
+      </div>
+      <h1 class="hero-title">Nourishing Your Family with <span>Sahil's Purest Milk</span></h1>
+      <p class="hero-desc">Enjoy daily early morning delivery of cold pasteurized milk, rich cow ghee, probiotic curds, and soft handmade paneer sourced directly from high-standard pastures. Zero chemicals, 100% natural hygiene.</p>
+      <div class="hero-ctas">
+        <a href="#catalog" class="btn btn-primary" id="cta-order-now">
+          Order Online
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+        </a>
+        <a href="#subscriptions" class="btn btn-secondary" id="cta-subscribe">Subscribe Milk Plan</a>
+      </div>
+    </div>
+    
+    <div class="hero-visual">
+      <div class="hero-image-wrapper">
+        <img src="assets/hero_banner.png" alt="Fresh pouring milk with rich creamy splashes - Sahil's Dairy banner" loading="eager">
+      </div>
+    </div>
+  </section>
+
+  <!-- Corporate Metrics & Highlights Section -->
+  <section id="highlights" style="padding-top: 20px;">
+    <div class="features-grid">
+      <div class="feature-card glassmorphism">
+        <div class="feature-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3>100% Certified Organic</h3>
+        <p>Stringent purity testing for antibiotics, water adulteration, and chemicals.</p>
+      </div>
+      <div class="feature-card glassmorphism">
+        <div class="feature-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3>Before 7 AM Delivery</h3>
+        <p>Silent doorstep drops ensures your tea, breakfast, and cereal are fresh every morning.</p>
+      </div>
+      <div class="feature-card glassmorphism">
+        <div class="feature-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
+        </div>
+        <h3>Sahil's Care Standard</h3>
+        <p>Sourced from high-hygiene cows fed under nutritionists' supervision.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Categories Section -->
+  <section id="categories" style="padding-top: 40px; padding-bottom: 20px;">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Fresh <span>Product Categories</span></h2>
+        <p class="section-desc">Handcrafted dairy catalog representing the peak of standard quality dairy products.</p>
+      </div>
+    </div>
+    
+    <!-- Dynamically Populated Carousel of circular category pills -->
+    <div class="categories-container" id="categories-container" role="tablist" aria-label="Product Categories">
+      <!-- Loaded dynamically via setupCategories() in main.js -->
+    </div>
+  </section>
+
+  <!-- Product Catalog Grid Section -->
+  <section id="catalog" style="padding-top: 20px;">
+    <div class="catalog-controls glassmorphism" style="padding: 20px; border-radius: var(--radius-md); margin-bottom: 30px;">
+      <!-- Search input -->
+      <div class="search-box">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.637 10.637z"/>
+        </svg>
+        <input type="text" id="catalog-search" placeholder="Search Gold Milk, Paneer, Curd, Ghee..." aria-label="Search dairy products">
+      </div>
+      
+      <!-- Filters and sorting dropdowns -->
+      <div class="filter-group">
+        <!-- Price range sliders -->
+        <div style="display: flex; align-items: center; gap: 10px; font-size: 0.85rem; font-weight: 600;">
+          <span>Price Range:</span>
+          <input type="number" id="price-min" placeholder="Min" style="width: 70px; padding: 8px; border-radius: 6px; border: 1px solid var(--card-border);" aria-label="Minimum price">
+          <span>to</span>
+          <input type="number" id="price-max" placeholder="Max" style="width: 70px; padding: 8px; border-radius: 6px; border: 1px solid var(--card-border);" aria-label="Maximum price">
+        </div>
+        
+        <select id="sort-filter" class="filter-select" aria-label="Sort products filter">
+          <option value="popular">Popularity</option>
+          <option value="low-to-high">Price: Low to High</option>
+          <option value="high-to-low">Price: High to Low</option>
+          <option value="top-rated">Customer Rating</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Product Grid listing all products -->
+    <div class="products-grid" id="products-grid">
+      <!-- Loaded dynamically via renderCatalog() in main.js -->
+    </div>
+  </section>
+
+  <!-- Dairy Subscription Builder Module -->
+  <section id="subscriptions">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Daily <span>Milk & Curd Subscriptions</span></h2>
+        <p class="section-desc">No more manual orders. Modify, pause, or resume your doorstep supplies in seconds.</p>
+      </div>
+    </div>
+
+    <div class="subscription-panel">
+      <!-- Subscription Configuration -->
+      <div class="sub-config-card glassmorphism">
+        <h3 style="font-size: 1.5rem; margin-bottom: 10px; color: var(--text-dark);">Build Your Subscription Plan</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 25px;">Customized timelines to fit your household requirements.</p>
+
+        <div class="form-group">
+          <label for="sub-product-select">Select Dairy Item</label>
+          <select id="sub-product-select" class="sub-product-selector">
+            <!-- Populated dynamically through JS -->
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Delivery Frequency</label>
+          <div class="sub-freq-selector">
+            <button class="sub-freq-btn active" data-freq="daily">Daily</button>
+            <button class="sub-freq-btn" data-freq="alternate">Alternate Days</button>
+            <button class="sub-freq-btn" data-freq="weekly">Weekly Plan</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Delivery Quantity (Packs/Bottles)</label>
+          <div class="qty-selector" style="width: fit-content; background: var(--bg-white);">
+            <button class="qty-btn" id="sub-qty-minus">-</button>
+            <div class="qty-val" id="sub-qty-val">1</div>
+            <button class="qty-btn" id="sub-qty-plus">+</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="sub-time-select">Morning Time Slot</label>
+          <select id="sub-time-select" class="sub-product-selector">
+            <option value="6:00 AM - 7:30 AM">6:00 AM - 7:30 AM (Highly Recommended)</option>
+            <option value="7:30 AM - 9:00 AM">7:30 AM - 9:00 AM</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="sub-start-date">Subscription Start Date</label>
+          <input type="date" id="sub-start-date" class="sub-date-input">
+        </div>
+
+        <ul class="sub-benefit-list">
+          <li>
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            <span><strong>No Delivery Fee</strong> applied on early morning subscription routines.</span>
+          </li>
+          <li>
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            <span><strong>Pause / Edit anytime</strong> before 10:00 PM of the previous night.</span>
+          </li>
+          <li>
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            <span>Loyalty points double on continuous monthly plans.</span>
+          </li>
+        </ul>
+
+        <button class="btn btn-primary" id="btn-subscribe" style="width: 100%;">Activate Subscription Plan</button>
+      </div>
+
+      <!-- Preview Summary Dashboard -->
+      <div class="sub-preview-card glassmorphism">
+        <div class="sub-preview-header">
+          <h3 style="font-size: 1.3rem; color: var(--text-dark);">Subscription Preview Summary</h3>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Simulated cost calculations based on choices</span>
+        </div>
+        
+        <div class="sub-preview-item">
+          <span>Product chosen:</span>
+          <strong id="sub-preview-product">-</strong>
+        </div>
+        <div class="sub-preview-item">
+          <span>Delivery routine:</span>
+          <strong id="sub-preview-freq">Daily</strong>
+        </div>
+        <div class="sub-preview-item">
+          <span>Cost per Delivery:</span>
+          <strong id="sub-preview-daily-price">₹0</strong>
+        </div>
+        <div class="sub-preview-item">
+          <span>Delivery charge:</span>
+          <strong style="color: var(--secondary);">FREE Delivery</strong>
+        </div>
+        <div class="sub-preview-total">
+          <span>Estimated Monthly Bill:</span>
+          <strong id="sub-preview-estimates">₹0</strong>
+        </div>
+        
+        <div style="padding: 15px; border-radius: var(--radius-sm); background: rgba(15, 82, 186, 0.05); font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; border: 1px solid rgba(15, 82, 186, 0.1);">
+          💡 Bills will be generated on the 1st of every calendar month. Standard bills accumulate on a monthly cycle. You are in full control!
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Membership Rewards & Club Dashboard -->
+  <section id="membership">
+    <div class="membership-banner">
+      <div class="member-content">
+        <div class="loyalty-badge">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm0-4h-2V7h2v8z"/></svg>
+          Sahil's Gold Club Rewards
+        </div>
+        <h2 style="font-size: 2.5rem; line-height: 1.2; margin: 15px 0 20px;">Earn Points with Every Sip of Health</h2>
+        <p style="font-size: 1.05rem; opacity: 0.9; margin-bottom: 30px; max-width: 500px;">Unlock exclusive benefits, customized birthday dairy treats, priority delivery time slots, and high-percentage referral discounts by accumulating points.</p>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 0.95rem;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 1.5rem;">🌟</span>
+            <span>1 Point for every ₹10 spent</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 1.5rem;">🎁</span>
+            <span>Free butter pack on 500 points</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live points checker & mock referral box -->
+      <div class="member-dashboard">
+        <h3 style="font-size: 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 10px;">Your Loyalty Dashboard</h3>
+        
+        <div>
+          <span class="points-lbl">Active Loyalty Points</span>
+          <div class="points-display" id="loyalty-points-val">150</div>
+        </div>
+
+        <div style="font-size: 0.85rem; opacity: 0.9; line-height: 1.4;">
+          Points are updated in real-time when shopping orders or subscriptions are processed.
+        </div>
+
+        <!-- Referral Link Generator -->
+        <div>
+          <span class="points-lbl" style="display: block; margin-bottom: 8px;">Share Referral Code for ₹50 Cash-back:</span>
+          <div class="referral-box">
+            <input type="text" id="referral-code-input" value="SAHILMILK50" readonly aria-label="Referral code to share">
+            <button class="btn-copy" id="btn-copy-ref">Copy Code</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Order Tracking Portal -->
+  <section id="tracking">
+    <div class="tracking-portal glassmorphism">
+      <div style="text-align: center; margin-bottom: 30px;">
+        <h2 style="font-size: 1.8rem; color: var(--text-dark); margin-bottom: 8px;">Live Doorstep Delivery Tracker</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Check your daily supply status in real-time using Order ID.</p>
+      </div>
+
+      <div class="tracker-search">
+        <input type="text" id="tracking-id-input" placeholder="Enter Order ID (e.g. SAHIL-101, SAHIL-102)" aria-label="Enter order tracking identifier">
+        <button class="btn btn-primary" id="btn-track-order">Track Status</button>
+      </div>
+
+      <!-- Interactive Stepper visual -->
+      <div id="tracker-visual-container" style="display: none; animation: pop 0.4s ease;">
+        <div class="stepper">
+          <div class="stepper-progress"></div>
+          
+          <div class="step active">
+            <div class="step-bubble">📦</div>
+            <span class="step-label">Ordered</span>
+          </div>
+          <div class="step">
+            <div class="step-bubble">🏪</div>
+            <span class="step-label">Packed</span>
+          </div>
+          <div class="step">
+            <div class="step-bubble">🚴</div>
+            <span class="step-label">Out for Delivery</span>
+          </div>
+          <div class="step">
+            <div class="step-bubble">🏠</div>
+            <span class="step-label">Delivered</span>
+          </div>
+        </div>
+
+        <div id="tracker-status-text" style="text-align: center; font-size: 1rem; color: var(--text-dark); margin-top: 25px;">
+          Current Status: <strong>Ordered</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer Reviews with Verified Purchase badge -->
+  <section id="reviews">
+    <div class="section-header" style="text-align: center; justify-content: center; flex-direction: column;">
+      <h2 class="section-title">Loved by <span>Thousands of Families</span></h2>
+      <p class="section-desc">Real verified testimonials from daily milk subcribers and corporate franchise partners.</p>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-card glassmorphism">
+        <div class="review-header">
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">RK</div>
+            <div>
+              <h4 style="color: var(--text-dark);">Rajesh Kumar</h4>
+              <span class="verified-badge">
+                <svg width="10" height="10" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                Verified Milk Subscriber
+              </span>
+            </div>
+          </div>
+          <!-- Star ratings -->
+          <div class="product-rating">⭐⭐⭐⭐⭐</div>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">"We transitioned to Sahil's Dairy subscription 3 months back. The Gold Milk is exceptionally thick, and it always drops at our door before 6:30 AM without fail. Curd is perfectly dense too."</p>
+      </div>
+
+      <div class="review-card glassmorphism">
+        <div class="review-header">
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">AS</div>
+            <div>
+              <h4 style="color: var(--text-dark);">Anjali Sharma</h4>
+              <span class="verified-badge">
+                <svg width="10" height="10" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                Verified Ghee Customer
+              </span>
+            </div>
+          </div>
+          <div class="product-rating">⭐⭐⭐⭐⭐</div>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">"The Pure Cow Ghee is outstandingly aromatic and granular, exactly like home-churned ghee! The packaging is top quality too. Very satisfied."</p>
+      </div>
+
+      <div class="review-card glassmorphism">
+        <div class="review-header">
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">VS</div>
+            <div>
+              <h4 style="color: var(--text-dark);">Vikram Singh</h4>
+              <span class="verified-badge">
+                <svg width="10" height="10" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                Verified Purchase
+              </span>
+            </div>
+          </div>
+          <div class="product-rating">⭐⭐⭐⭐⭐</div>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">"Paneer is incredibly soft, melts immediately when cooked. Ordering from the site is super easy, cart stores item values locally so I don't lose my selection."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Store Booth Locator -->
+  <section id="locator">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Sahil's <span>Booth & Parlour Locator</span></h2>
+        <p class="section-desc">Locate your nearest official Sahil's Dairy booth to buy chilled fresh products.</p>
+      </div>
+      
+      <!-- Pincode locator filter -->
+      <div style="display: flex; gap: 8px;">
+        <input type="text" id="locator-search" placeholder="Enter Pincode or City Area" style="padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--card-border);" aria-label="Filter booths by location">
+        <button class="btn btn-primary" id="btn-search-booth" style="padding: 10px 20px;">Search</button>
+      </div>
+    </div>
+
+    <div class="locator-container glassmorphism">
+      <!-- List of Booth Parlours -->
+      <div class="booth-list" id="booth-cards-container">
+        <!-- Rendered dynamically by renderLocatorBooths() in main.js -->
+      </div>
+
+      <!-- Custom Stylized SVG Map Representation of city booths -->
+      <div class="map-canvas" id="interactive-map-frame">
+        <svg class="map-svg-bg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- Stylized Mock city outlines -->
+          <rect x="10" y="10" width="180" height="180" rx="15" fill="none"/>
+          <path d="M20,50 C60,40 120,70 180,50" fill="none" opacity="0.3"/>
+          <path d="M50,20 C80,80 130,120 150,180" fill="none" opacity="0.3"/>
+          <circle cx="100" cy="100" r="60" fill="none" stroke-dasharray="5,5" opacity="0.2"/>
+        </svg>
+        
+        <!-- Interactive Pins loaded dynamically in JS -->
+        <div id="map-pins-container" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none;">
+          <!-- Pins like .map-pin dynamically generated in main.js -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Franchise Section -->
+  <section id="franchise">
+    <div class="franchise-section">
+      <div>
+        <h2 style="font-size: 2.2rem; color: var(--text-dark); margin-bottom: 15px;">Become a Official Distributor</h2>
+        <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 25px; line-height: 1.6;">Partner with Sahil's Dairy, one of the fastest growing high-hygiene dairy chains. Set up a corporate franchised booth parlour in your locality and distribute dairy smiles.</p>
+        
+        <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px;">
+          <div style="display: flex; gap: 10px; font-size: 0.95rem;">
+            <span style="color: var(--primary); font-weight: 800;">✓</span>
+            <span>Minimal investment requirement with fast initial returns.</span>
+          </div>
+          <div style="display: flex; gap: 10px; font-size: 0.95rem;">
+            <span style="color: var(--primary); font-weight: 800;">✓</span>
+            <span>Full training, cooling equipment support, and logistics provided by corporate headquarters.</span>
+          </div>
+          <div style="display: flex; gap: 10px; font-size: 0.95rem;">
+            <span style="color: var(--primary); font-weight: 800;">✓</span>
+            <span>Branding, banners, local promotional flyers, and customer tracking system setup included.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Franchise Form -->
+      <div class="franchise-form-container glassmorphism">
+        <h3 style="font-size: 1.4rem; margin-bottom: 20px; color: var(--text-dark);">Franchise Enquiry Application</h3>
+        <form id="franchise-form">
+          <div class="form-group">
+            <label for="fran-name">Full Name</label>
+            <input type="text" id="fran-name" class="sub-date-input" placeholder="e.g. Sahil Rawat" required>
+          </div>
+          <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div>
+              <label for="fran-email">Email Address</label>
+              <input type="email" id="fran-email" class="sub-date-input" placeholder="e.g. sahil@gmail.com" required>
+            </div>
+            <div>
+              <label for="fran-phone">Mobile Number</label>
+              <input type="tel" id="fran-phone" class="sub-date-input" placeholder="e.g. 9876543210" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="fran-city">Target City / Area</label>
+            <input type="text" id="fran-city" class="sub-date-input" placeholder="e.g. Jaipur, Rajasthan" required>
+          </div>
+          <div class="form-group">
+            <label for="fran-space">Available Retail Commercial Space (Sq. Ft.)</label>
+            <input type="number" id="fran-space" class="sub-date-input" placeholder="e.g. 150 Sq Ft" required>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Franchise Proposal</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mobile App Promotion Section -->
+  <section id="app-promo">
+    <div class="app-promo-banner glassmorphism">
+      <div>
+        <h2 style="font-size: 2.2rem; color: var(--text-dark); margin-bottom: 10px;">Download Sahil's Dairy App</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">Manage daily subscriptions, review active bills, and unlock instant cashback benefits using our mobile app.</p>
+        
+        <div class="app-ctas">
+          <a href="#" class="app-btn">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.5 12c0-2.5 1.5-4.5 3.5-5.5-1-1.5-2.5-2.5-4.5-2.5-2 0-3.5 1.5-4.5 1.5S9.5 4 8 4C5 4 2.5 7 2.5 11c0 3.5 2 6.5 4.5 8.5C8 20.5 9 21 10 21c1 0 1.5-.5 2.5-.5s1.5.5 2.5.5c1 0 2-.5 3-1.5c1-1 1.5-2 1.5-2-2.5-1-4-2.5-4-5.5z"/></svg>
+            <div>
+              <span style="font-size: 0.65rem; display: block; opacity: 0.7;">Download on the</span>
+              <strong>App Store</strong>
+            </div>
+          </a>
+          <a href="#" class="app-btn">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M3 5.277c0-.986.79-1.272 1.488-.867l14.73 8.544a1 1 0 010 1.734L4.488 23.23C3.79 23.636 3 23.35 3 22.363V5.277z"/></svg>
+            <div>
+              <span style="font-size: 0.65rem; display: block; opacity: 0.7;">Get it on</span>
+              <strong>Google Play</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- QR Code mockup visual representation -->
+      <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+        <div style="padding: 15px; background: white; border-radius: var(--radius-sm); border: 1px solid var(--card-border); box-shadow: var(--shadow-md);">
+          <!-- Styled pure CSS vector QR Code representation -->
+          <div style="width: 100px; height: 100px; background: repeating-conic-gradient(from 0deg, #111 0deg 90deg, #fff 90deg 180deg) 0 0/20px 20px;"></div>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">Scan this QR code with your mobile camera to download the Android/iOS application instantly.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide-out Cart Drawer Sidebar -->
+  <div class="cart-drawer" id="cart-drawer" role="dialog" aria-label="Shopping Cart Drawer">
+    <div class="cart-header">
+      <h3 style="font-size: 1.25rem; color: var(--text-dark);">Shopping Cart</h3>
+      <button class="cart-close-btn" id="btn-cart-close" aria-label="Close Cart">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="cart-body" id="cart-body">
+      <!-- Loaded dynamically through renderCart() inside main.js -->
+    </div>
+
+    <!-- Promo code input inside cart -->
+    <div style="padding: 15px 25px; border-top: 1px solid var(--card-border); background: var(--bg-white);">
+      <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 5px;">Promo Coupon Code:</span>
+      <div class="coupon-container">
+        <input type="text" id="coupon-code-input" placeholder="e.g. MILK20, FRESH10" aria-label="Coupon code text field">
+        <button id="btn-apply-coupon">Apply</button>
+      </div>
+      <div id="coupon-msg"></div>
+    </div>
+
+    <!-- Bill Summary & CTA -->
+    <div class="cart-footer">
+      <div class="bill-row">
+        <span>Cart Items Subtotal:</span>
+        <span id="bill-subtotal">₹0</span>
+      </div>
+      <div class="bill-row">
+        <span>Applied Discount:</span>
+        <span id="bill-discount">₹0</span>
+      </div>
+      <div class="bill-row">
+        <span>5% GST (Dairy standard):</span>
+        <span id="bill-gst">₹0</span>
+      </div>
+      <div class="bill-row">
+        <span>Delivery Routine Charges:</span>
+        <span id="bill-delivery">₹0</span>
+      </div>
+      <div class="bill-row total">
+        <span>Accumulated Total:</span>
+        <span id="bill-total">₹0</span>
+      </div>
+
+      <button class="btn btn-primary" id="btn-checkout" style="width: 100%; justify-content: center; margin-top: 10px;">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- Multi-step Checkout Modal Popup -->
+  <div class="modal-overlay" id="checkout-modal">
+    <div class="modal-content glassmorphism" style="max-width: 600px;">
+      <button class="btn-modal-close" aria-label="Close Checkout">×</button>
+      
+      <div style="margin-bottom: 25px; border-bottom: 1px solid var(--card-border); padding-bottom: 10px;">
+        <h2 style="color: var(--text-dark);">Complete Your Order</h2>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">Fresh early morning delivery scheduled tomorrow.</p>
+      </div>
+
+      <form id="checkout-form">
+        <!-- Customer details -->
+        <h3 style="font-size: 1rem; color: var(--primary); margin-bottom: 12px; font-weight: 700;">Customer Information</h3>
+        <div class="form-group">
+          <label for="checkout-name">Full Delivery Name</label>
+          <input type="text" id="checkout-name" class="sub-date-input" placeholder="e.g. Sahil Rawat" required>
+        </div>
+        <div class="form-group">
+          <label for="checkout-phone">Active Contact Mobile</label>
+          <input type="tel" id="checkout-phone" class="sub-date-input" placeholder="e.g. 9876543210" required>
+        </div>
+        <div class="form-group">
+          <label for="checkout-address">Complete Delivery Address</label>
+          <input type="text" id="checkout-address" class="sub-date-input" placeholder="House/Flat No., Building, Street Name, Pincode" required>
+        </div>
+
+        <!-- Time Slot Selector -->
+        <div class="form-group">
+          <label for="checkout-timeslot">Morning Time Slot</label>
+          <select id="checkout-timeslot" class="sub-product-selector">
+            <option value="6:00 AM - 8:00 AM">6:00 AM - 8:00 AM (Highly Recommended)</option>
+            <option value="8:00 AM - 10:00 AM">8:00 AM - 10:00 AM</option>
+          </select>
+        </div>
+
+        <!-- Payment selector -->
+        <h3 style="font-size: 1rem; color: var(--primary); margin-bottom: 12px; font-weight: 700; margin-top: 20px;">Payment Method</h3>
+        <div class="form-group">
+          <select id="checkout-payment" class="sub-product-selector">
+            <option value="cod">Cash on Delivery (COD)</option>
+            <option value="upi">UPI Gateway Integration (Mocked)</option>
+            <option value="card">Credit / Debit Card (Mocked)</option>
+          </select>
+        </div>
+
+        <!-- Receipt list -->
+        <div style="padding: 15px; border-radius: var(--radius-sm); background: var(--bg-cream); border: 1px solid var(--card-border); margin: 20px 0; font-size: 0.9rem;">
+          <h4 style="margin-bottom: 10px; color: var(--text-dark);">Order Pricing Summary:</h4>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+            <span>Subtotal:</span>
+            <span id="checkout-subtotal">₹0</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 5px; display: none;" id="checkout-coupon-row">
+            <span>Coupon Discount:</span>
+            <span id="checkout-discount" style="color: var(--secondary); font-weight: 600;">₹0</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+            <span>5% GST:</span>
+            <span id="checkout-gst">₹0</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+            <span>Delivery:</span>
+            <span id="checkout-delivery">₹0</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-weight: 800; border-top: 1px solid var(--card-border); padding-top: 5px; margin-top: 5px; color: var(--text-dark);">
+            <span>Order Total:</span>
+            <span id="checkout-total">₹0</span>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="btn-place-order" style="width: 100%;">Place Delivery Order</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Product Quick View Modal -->
+  <div class="modal-overlay" id="quickview-modal">
+    <div class="modal-content glassmorphism">
+      <button class="btn-modal-close" aria-label="Close Quick View">×</button>
+      
+      <div class="modal-body">
+        <!-- Visual drawing -->
+        <div class="modal-visual">
+          <div class="modal-main-image">
+            <!-- Custom SVG injected via JS -->
+          </div>
+        </div>
+
+        <!-- Product detail and meta parameters -->
+        <div class="modal-info-panel">
+          <div class="modal-meta">
+            <span class="verified-badge">Official Sahil's Dairy Supply</span>
+          </div>
+          
+          <h2 class="modal-title">-</h2>
+          
+          <div class="modal-price-volume">
+            <span class="modal-price">₹0</span>
+            <span class="modal-volume">/ 500ml</span>
+          </div>
+
+          <p class="modal-desc">-</p>
+
+          <!-- Tabs inside Modal -->
+          <div class="modal-tabs">
+            <button class="modal-tab-btn active" data-tab="nutrition" aria-label="Show nutrition content">Nutrition Sheet</button>
+            <button class="modal-tab-btn" data-tab="ingredients" aria-label="Show ingredients content">Ingredients</button>
+            <button class="modal-tab-btn" data-tab="details" aria-label="Show storage detail content">Shelf & Storage</button>
+          </div>
+
+          <!-- Tab Panels -->
+          <div class="modal-tab-pane active" id="tab-nutrition">
+            <!-- Nutrition grid loaded dynamically through main.js -->
+          </div>
+          <div class="modal-tab-pane" id="tab-ingredients">
+            <p id="modal-ingredients" style="line-height: 1.5; color: var(--text-muted);"></p>
+          </div>
+          <div class="modal-tab-pane" id="tab-details">
+            <p style="margin-bottom: 8px;"><strong>Shelf Life:</strong> <span id="modal-shelf" style="color: var(--text-muted);"></span></p>
+            <p><strong>Storage:</strong> <span id="modal-storage" style="color: var(--text-muted);"></span></p>
+          </div>
+
+          <!-- Add to Cart in modal -->
+          <div class="modal-cta-row">
+            <div class="qty-selector">
+              <button class="qty-btn qty-minus">-</button>
+              <div class="qty-val">1</div>
+              <button class="qty-btn qty-plus">+</button>
+            </div>
+            <button class="btn btn-primary btn-modal-add" style="flex: 1;">Add to Basket</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <!-- Glassmorphic Login / Signup Modal -->
+  <div class="modal-overlay" id="auth-modal">
+    <div class="modal-content glassmorphism" style="max-width: 480px; padding: 35px;">
+      <button class="btn-modal-close" id="btn-auth-close" aria-label="Close Authentication Screen">×</button>
+      
+      <!-- Tab Selector -->
+      <div class="auth-tabs" style="display: flex; border-bottom: 2px solid var(--card-border); margin-bottom: 25px; padding-bottom: 5px;">
+        <button class="auth-tab-btn active" id="tab-login-btn" style="flex: 1; padding: 12px; background: none; border: none; font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text-dark); cursor: pointer; transition: var(--transition); border-bottom: 3px solid var(--primary); margin-bottom: -7px;">Sign In</button>
+        <button class="auth-tab-btn" id="tab-signup-btn" style="flex: 1; padding: 12px; background: none; border: none; font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text-muted); cursor: pointer; transition: var(--transition); border-bottom: 3px solid transparent; margin-bottom: -7px;">Create Account</button>
+      </div>
+
+      <!-- Login Form Section -->
+      <div class="auth-form-pane active" id="form-login-pane" style="animation: fadeIn 0.4s ease;">
+        <div style="margin-bottom: 20px; text-align: center;">
+          <h3 style="font-size: 1.3rem; color: var(--text-dark); margin-bottom: 6px;">Welcome Back!</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">Sign in to access your loyalty points, orders, and subscriptions.</p>
+        </div>
+        <form id="login-form">
+          <div class="form-group">
+            <label for="auth-login-email">Email Address</label>
+            <input type="email" id="auth-login-email" class="sub-date-input" placeholder="e.g. sahil@gmail.com" required>
+          </div>
+          <div class="form-group" style="position: relative;">
+            <label for="auth-login-password">Password</label>
+            <input type="password" id="auth-login-password" class="sub-date-input" placeholder="••••••••" required>
+            <button type="button" class="btn-toggle-pwd" style="position: absolute; right: 12px; top: 38px; background: none; border: none; cursor: pointer; color: var(--text-muted); font-size: 1.1rem;" aria-label="Toggle Password Visibility">👁️</button>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 15px;">Sign In to Account</button>
+        </form>
+      </div>
+
+      <!-- Signup Form Section -->
+      <div class="auth-form-pane" id="form-signup-pane" style="display: none; animation: fadeIn 0.4s ease;">
+        <div style="margin-bottom: 20px; text-align: center;">
+          <h3 style="font-size: 1.3rem; color: var(--text-dark); margin-bottom: 6px;">Join the Dairy Club</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">Get 150 starter loyalty points instantly upon account activation.</p>
+        </div>
+        <form id="signup-form">
+          <div class="form-group">
+            <label for="auth-signup-name">Full Name</label>
+            <input type="text" id="auth-signup-name" class="sub-date-input" placeholder="e.g. Sahil Rawat" required>
+          </div>
+          <div class="form-group">
+            <label for="auth-signup-email">Email Address</label>
+            <input type="email" id="auth-signup-email" class="sub-date-input" placeholder="e.g. sahil@gmail.com" required>
+          </div>
+          <div class="form-group" style="position: relative;">
+            <label for="auth-signup-password">Password</label>
+            <input type="password" id="auth-signup-password" class="sub-date-input" placeholder="Min. 6 characters" required minlength="6">
+            <button type="button" class="btn-toggle-pwd" style="position: absolute; right: 12px; top: 38px; background: none; border: none; cursor: pointer; color: var(--text-muted); font-size: 1.1rem;" aria-label="Toggle Password Visibility">👁️</button>
+          </div>
+          <div class="form-group" style="display: grid; grid-template-columns: 1fr; gap: 15px;">
+            <div>
+              <label for="auth-signup-phone">Mobile Number (Optional)</label>
+              <input type="tel" id="auth-signup-phone" class="sub-date-input" placeholder="e.g. 9876543210">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="auth-signup-address">Delivery Address (Optional)</label>
+            <input type="text" id="auth-signup-address" class="sub-date-input" placeholder="Flat, Street, Area, Pincode">
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 15px;">Register Account</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Glassmorphic User Dashboard Modal -->
+  <div class="modal-overlay" id="dashboard-modal">
+    <div class="modal-content glassmorphism" style="max-width: 900px; padding: 0; display: flex; flex-direction: row; height: 80vh; overflow: hidden; border-radius: var(--radius-lg);">
+      <button class="btn-modal-close" id="btn-dashboard-close" aria-label="Close Dashboard" style="top: 15px; right: 15px;">×</button>
+      
+      <!-- Dashboard Sidebar Navigation -->
+      <div class="dashboard-sidebar glassmorphism" style="width: 260px; padding: 30px 20px; display: flex; flex-direction: column; border: none; border-right: 1px solid var(--card-border);">
+        <div style="text-align: center; margin-bottom: 30px;">
+          <div class="dashboard-avatar" id="dash-avatar-lbl" style="width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; margin: 0 auto 12px; box-shadow: var(--shadow-sm);">S</div>
+          <h3 id="dash-welcome-name" style="font-size: 1.15rem; color: var(--text-dark); margin-bottom: 2px;">Sahil Rawat</h3>
+          <span style="font-size: 0.75rem; color: var(--secondary); font-weight: 700; background: rgba(46, 139, 87, 0.08); padding: 4px 10px; border-radius: 50px; border: 1px solid rgba(46, 139, 87, 0.15);">★ Gold Club Member</span>
+        </div>
+        
+        <div class="dashboard-nav-list" style="display: flex; flex-direction: column; gap: 8px;">
+          <button class="dash-nav-btn active" data-tab="overview">
+            <span>📊</span> Overview Stats
+          </button>
+          <button class="dash-nav-btn" data-tab="orders">
+            <span>📦</span> Order History
+          </button>
+          <button class="dash-nav-btn" data-tab="subs">
+            <span>📅</span> Milk Subscriptions
+          </button>
+          <button class="dash-nav-btn" data-tab="settings">
+            <span>⚙️</span> Account Details
+          </button>
+        </div>
+
+        <div style="margin-top: auto; padding: 15px; background: rgba(15, 82, 186, 0.05); border-radius: var(--radius-sm); border: 1px solid rgba(15, 82, 186, 0.1); text-align: center; font-size: 0.75rem; color: var(--text-muted);">
+          💬 Member Support:<br><strong>1800-SAHIL-MILK</strong>
+        </div>
+      </div>
+      
+      <!-- Dashboard Main Viewport -->
+      <div class="dashboard-main-view" style="flex: 1; padding: 40px; overflow-y: auto; background: var(--bg-cream); transition: background-color 0.5s ease;">
+        
+        <!-- View Pane 1: Overview Stats -->
+        <div class="dash-pane active" id="pane-overview" style="animation: fadeIn 0.4s ease;">
+          <h2 style="font-size: 1.8rem; color: var(--text-dark); margin-bottom: 8px;">Dairy Club Overview</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 30px;">Accumulate loyalty points on every order to unlock free products and direct cashback discounts!</p>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px;">
+            <!-- Loyalty Points Circular Visual Card -->
+            <div class="glassmorphism" style="padding: 25px; border-radius: var(--radius-md); text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: var(--shadow-sm);">
+              <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 15px;">Active Loyalty Balance</span>
+              <div class="loyalty-meter-container" style="position: relative; width: 140px; height: 140px; display: flex; align-items: center; justify-content: center;">
+                <!-- Ring visualization -->
+                <svg width="100%" height="100%" viewBox="0 0 36 36" style="transform: rotate(-90deg);">
+                  <circle cx="18" cy="18" r="16" fill="none" stroke="var(--card-border)" stroke-width="2.5" />
+                  <circle cx="18" cy="18" r="16" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-dasharray="100 100" stroke-dashoffset="30" stroke-linecap="round" id="dash-loyalty-ring" style="transition: stroke-dashoffset 1s ease-out;" />
+                </svg>
+                <div style="position: absolute; text-align: center;">
+                  <span id="dash-loyalty-val" style="font-size: 2rem; font-weight: 800; color: var(--primary); display: block; line-height: 1;">150</span>
+                  <span style="font-size: 0.65rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Points</span>
+                </div>
+              </div>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 15px; line-height: 1.4;">Earn <strong>50 points</strong> on subscriptions, and <strong>20 points</strong> on standard e-commerce parlour orders.</p>
+            </div>
+            
+            <!-- Quick Info Cards -->
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+              <div class="glassmorphism" style="padding: 20px; border-radius: var(--radius-md); display: flex; align-items: center; gap: 15px; box-shadow: var(--shadow-sm);">
+                <div style="font-size: 2.2rem; background: rgba(15, 82, 186, 0.08); width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary);">📦</div>
+                <div>
+                  <h4 style="font-size: 1.25rem; color: var(--text-dark); margin-bottom: 2px;" id="dash-order-count-lbl">0</h4>
+                  <span style="font-size: 0.85rem; color: var(--text-muted);">Total Placed Orders</span>
+                </div>
+              </div>
+              
+              <div class="glassmorphism" style="padding: 20px; border-radius: var(--radius-md); display: flex; align-items: center; gap: 15px; box-shadow: var(--shadow-sm);">
+                <div style="font-size: 2.2rem; background: rgba(46, 139, 87, 0.08); width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--secondary);">📅</div>
+                <div>
+                  <h4 style="font-size: 1.25rem; color: var(--text-dark); margin-bottom: 2px;" id="dash-sub-count-lbl">0</h4>
+                  <span style="font-size: 0.85rem; color: var(--text-muted);">Active Doorstep Subscriptions</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="glassmorphism" style="padding: 20px 25px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); display: flex; align-items: center; gap: 20px;">
+            <div style="font-size: 1.8rem;">💡</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;"><strong>Club Perk Active:</strong> Free Butter pack available when your balance crosses 500 loyalty points! Keep nourishing health.</p>
+          </div>
+        </div>
+        
+        <!-- View Pane 2: Order History -->
+        <div class="dash-pane" id="pane-orders" style="display: none; animation: fadeIn 0.4s ease;">
+          <h2 style="font-size: 1.8rem; color: var(--text-dark); margin-bottom: 8px;">Order Purchase History</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 25px;">Track processing steps, verify billings, and check delivery status details.</p>
+          
+          <!-- Dynamic Order history table -->
+          <div id="dash-orders-table-container">
+            <!-- Loaded dynamically in JS -->
+          </div>
+        </div>
+        
+        <!-- View Pane 3: Subscriptions -->
+        <div class="dash-pane" id="pane-subs" style="display: none; animation: fadeIn 0.4s ease;">
+          <h2 style="font-size: 1.8rem; color: var(--text-dark); margin-bottom: 8px;">Doorstep Subscriptions</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 25px;">Review scheduled milk deliveries and manage morning delivery slots.</p>
+          
+          <div id="dash-subs-list-container">
+            <!-- Loaded dynamically in JS -->
+          </div>
+        </div>
+        
+        <!-- View Pane 4: Account Details -->
+        <div class="dash-pane" id="pane-settings" style="display: none; animation: fadeIn 0.4s ease;">
+          <h2 style="font-size: 1.8rem; color: var(--text-dark); margin-bottom: 8px;">Club Account Details</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 25px;">Keep your contact coordinates and doorstep addresses synced to simplify e-commerce checkout.</p>
+          
+          <form id="dash-profile-form" style="max-width: 550px;">
+            <div class="form-group">
+              <label for="dash-profile-name">Full Registered Name</label>
+              <input type="text" id="dash-profile-name" class="sub-date-input" required>
+            </div>
+            <div class="form-group">
+              <label for="dash-profile-email">Primary Email Address (Locked)</label>
+              <input type="email" id="dash-profile-email" class="sub-date-input" style="opacity: 0.6; cursor: not-allowed;" readonly>
+            </div>
+            <div class="form-group">
+              <label for="dash-profile-phone">Delivery Mobile Number</label>
+              <input type="tel" id="dash-profile-phone" class="sub-date-input" placeholder="e.g. 9876543210">
+            </div>
+            <div class="form-group">
+              <label for="dash-profile-address">Standard Doorstep Shipping Address</label>
+              <input type="text" id="dash-profile-address" class="sub-date-input" placeholder="House/Flat No, Building, Area, Pincode">
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Save Profile Changes</button>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- Dynamic Animated Toast Notification Container -->
+  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col" style="max-width: 320px;">
+        <a href="#" class="logo footer-logo" aria-label="Sahil's Dairy Footer Home">
+          <!-- Logo svg replica -->
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width: 34px; height: 34px;">
+            <path d="M50,95 C75,95 85,75 85,55 C85,35 68,10 50,5 C32,10 15,35 15,55 C15,75 25,95 50,95 Z" fill="#FFFFFF"/>
+            <path d="M50,95 C70,95 78,80 78,60 C78,40 64,15 50,8 C36,15 22,40 22,60 C22,80 30,95 50,95 Z" fill="#0F52BA"/>
+          </svg>
+          <span style="color: white;">Sahil's Dairy</span>
+        </a>
+        <p class="footer-desc">Sahil's Dairy is one of the highest-rated dairy conglomerates delivering freshness, pure cow ghee, and delicious sweets at corporate standards.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social-btn" aria-label="Sahil's Dairy Facebook">FB</a>
+          <a href="#" class="footer-social-btn" aria-label="Sahil's Dairy Twitter">TW</a>
+          <a href="#" class="footer-social-btn" aria-label="Sahil's Dairy Instagram">IG</a>
+          <a href="#" class="footer-social-btn" aria-label="Sahil's Dairy LinkedIn">LN</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore Parlour</h4>
+        <ul>
+          <li><a href="#catalog">Shop All Dairy</a></li>
+          <li><a href="#subscriptions">Daily Milk Plans</a></li>
+          <li><a href="#membership">Sahil's Gold Rewards</a></li>
+          <li><a href="#locator">Find Nearby Booths</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Franchise & Corp</h4>
+        <ul>
+          <li><a href="#franchise">Become a Distributor</a></li>
+          <li><a href="#franchise">Franchise Form</a></li>
+          <li><a href="#">Corporate Tenders</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Information Policies</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">Contact Helpdesk</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Dairy Newsletter</h4>
+        <p style="font-size: 0.85rem; line-height: 1.4; margin-bottom: 15px;">Subscribe for fresh updates, health tips, and weekly discount coupons.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Newsletter subscribed successfully!'); this.reset();">
+          <input type="email" placeholder="Enter Email Address" required aria-label="Enter email for newsletter">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Sahil's Dairy Corporate Group. All Rights Reserved.</p>
+      <p style="font-size: 0.8rem; opacity: 0.8;">Inspired by high-quality dairies like Saras, Mother Dairy, and Amul.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
